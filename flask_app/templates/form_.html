@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>SD Cosmetics</title>
+  </head>
+  <body>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <div class = 'inner'>
+        <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('main.index') }}">Home</a>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">User</a>
+            <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('main.new_form') }}">Order Request</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('main.recommend_index') }}">Recommendation</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('main.my_order') }}">My Page</a></li>
+            </ul>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Admin</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ url_for('admin.admin') }}">Inventory</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('admin.awaiting') }}">Awaiting Confirmation</a></li>
+                </ul>
+        </div><br>
+        <center>
+    <h3>신규 오더 접수 양식</h3></center>
+    <div>
+        <hr/>
+    <h4>신규오더양식</h4>
+    </div><br>
+    <div id="form">
+        <form method = "post" action='/user'>
+            <div class="form-group">
+            <label for="formGroupExampleInput">회사명:</label>
+            <input id="company" name="company" type="text" placeholder="ABC Company" placeholder="10" size="40" required /><br>
+            </div>
+            <div class="form-group">
+            <label for="formGroupExampleInput">주소:</label>
+            <input id="location" name="location" type="text" placeholder="경기도 수원시" placeholder="10" size="40" required /><br>
+            </div>
+            <div class="form-group">
+            <label>이름:</label>
+            <input id="contact_name" name="contact_name" type="text" placeholder="강백호" placeholder="10" size="40" required /><br>
+            </div>
+            <div class="form-group"></class>
+            <label>이메일주소:</label>
+            <input id="email" name="email" type="text" placeholder="whitetiger@wiz.net" placeholder="10" size="40" required /><br>
+            </div>
+            <div class="form-group"></class>
+            <label>전화번호:</label>
+            <input id="mobile" name="mobile" type="text" placeholder="01012341234" placeholder="10" size="40" required /><br>
+            </div>
+            <div class="form-group"></class>            
+            <label>품번:</label>
+            <input id="item_id" name="item_id" type="number" placeholder=1 placeholder="10" size="40" required /><br>
+            </div>
+            <div class="form-group"></class>  
+            <label>수량(박스):</label>
+            <input id="qty" name="qty" type="number" placeholder=10 placeholder="10" size="40" required /><br>
+            </div>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>   <br> 
+<hr/>
+<br>
+    <h4>제품 리스트</h4>
+    <br>
+    <div id="product">
+        <table class="table table-bordered table-striped" style="width:100%; height: auto;">
+            <tr>
+                <td style="width: 50px;">
+                    품번
+                </td>
+                <td style="width: 300px;">
+                    품명
+                </td>
+                <td style="width: 50px;">
+                    생산소요일
+                </td>
+                <td style="width: 80px;">
+                    개수(pcs)/박스당  
+                </td>
+                <td style="width: 200px;">
+                    박스당 판매가
+                </td>
+                <td style="width: 100px;">
+                    제품타입
+                </td>
+            </tr>
+            {% for items in product_list %}    
+            <tr>
+                </td> 
+                           
+                <td>
+                    {{items.id}}
+                </td>
+                <td>
+                    {{items.name}}
+                </td>
+                <td>
+                    {{items.lead_time_days}}
+                </td>
+                <td>
+                    {{items.pcs_for_box}}
+                </td>
+                <td>
+                    {{items.price_for_box}}
+                </td>
+                <td>
+                    {{items.prod_type}}
+                </td>
+            </tr>
+            {% endfor %} 
+        </table><br>    
+    </div>
+    <br>
+<div align=center>
+    <br>
+    <br>
+<div>
+<hr>
+<br>
+<br>
+<h3>  제품 선택이 어려우신 가요 ? 저희가 도와드릴게요  </h3><br></div>
+<a href = "{{ url_for('main.recommend_index') }}"><img src="/static/image/recom.png" height="50" width="150"></a>
+<br>
+<br>
+<br>
+</div>
+<br>
+<br>
+</body>
+</html>

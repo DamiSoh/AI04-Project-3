@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>SD Cosmetics</title>
+  </head>
+  <body>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <div class = 'inner'>
+        <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('main.index') }}">Home</a>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">User</a>
+            <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('main.new_form') }}">Order Request</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('main.recommend_index') }}">Recommendation</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('main.my_order') }}">My Page</a></li>
+            </ul>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Admin</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ url_for('admin.admin') }}">Inventory</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('admin.awaiting') }}">Awaiting Confirmation</a></li>
+                </ul>
+        </div><br>
+        <center>
+        <h3> 제품 관리 </h3>
+        </center>
+        <hr/><br>
+        <h4>제품 리스트 </h4>
+        <br>
+        <div id="product">
+                    <table class="table table-bordered table-striped" style="width:100%; height: auto;">
+                        <tr>
+                            <td style="width: 50px;">
+                                품번
+                            </td>
+                            <td style="width: 300px;">
+                                품명
+                            </td>
+                            <td style="width: 50px;">
+                                생산소요일
+                            </td>
+                            <td style="width: 80px;">
+                                개수(pcs)/박스당  
+                            </td>
+                            <td style="width: 200px;">
+                                박스당 판매가
+                            </td>
+                            <td style="width: 100px;">
+                                제품타입
+                            </td>
+                </tr>
+                {% for items in product_list %}    
+                <tr>
+                    </td> 
+                               
+                    <td>
+                        {{items.id}}
+                    </td>
+                    <td>
+                        {{items.name}}
+                    </td>
+                    <td>
+                        {{items.lead_time_days}}
+                    </td>
+                    <td>
+                        {{items.pcs_for_box}}
+                    </td>
+                    <td>
+                        {{items.price_for_box}}
+                    </td>
+                    <td>
+                        {{items.prod_type}}
+                    </td>
+                </tr>
+                {% endfor %} 
+            </table><br> 
+        <button onClick="window.location.reload()">새로 고침</button>
+        </div>
+    <div>
+        <hr>
+        <br>
+        <h4>신제품 등록 </h4>
+        <br>
+        <div id="form">
+            <form method = "post" action='/admin'>
+                <label>품명:</label>
+                <input id="prod_name" name="prod_name" type="text" size="40" required /><br>
+                <label>생산소요일:</label>
+                <input id="prod_days" name="prod_days" type="number" size="40" required /><br>
+                <label>박스당 장입개수:</label>
+                <input id="prod_pcs" name="prod_pcs" type="number"  size="40" required /><br>
+                <label>박스당 판매가격:</label>
+                <input id="prod_price" name="prod_price" type="number"  size="40" required /><br>
+                <label>제품타입 (기초or색조):</label>
+                <input id="prod_type" name="prod_type" type="text"  size="40" required /><br>
+                <br>
+                <input type="submit">
+                <br>
+            </form>
+            <br><br>
+        </div>      
+    </div>
+    <div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <script>
+                alert("{{messages[-1]}}")
+            </script>
+        {% endif %}
+    {% endwith %}
+    </div>
+    </body>
+</head>
+</html>
