@@ -1,22 +1,18 @@
 
 
-<p align=center>
-    AI04-Project-3  </p>
+
+    AI04-Project-3  
     
 # 구매자 및 관리자를 위한 Sales Order 관리 App
 
 
-``` 
-기간: 2021.07.29 - 2021.08.02
 
-DB: SQLite 
-Micro Web Framework: FLASK
-Release: HEROKU
-```
-
+**기간**: 2021.07.29 - 2021.08.02 <br>
+**DB**: SQLite <br>
+**Micro Web Framework**: FLASK <br>
+**Release**: HEROKU <br>
 <br>
 <br>
-
 
 
 ## 배포
