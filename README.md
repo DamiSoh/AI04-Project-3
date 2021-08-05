@@ -11,6 +11,7 @@
 **DB**: SQLite <br>
 **Micro Web Framework**: FLASK <br>
 **Platform**: HEROKU <br>
+**Languages**: Python, HTML <br>
 <br>
 <br>
 
