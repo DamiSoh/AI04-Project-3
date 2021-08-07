@@ -9,8 +9,8 @@
 
 **기간**: 2021.07.29 - 2021.08.02 <br>
 **DB**: SQLite <br>
-**Micro Web Framework**: FLASK <br>
-**Platform**: HEROKU <br>
+**Framework**: FLASK <br>
+**Cloud**: HEROKU <br>
 **Languages**: Python, HTML <br>
 <br>
 <br>
