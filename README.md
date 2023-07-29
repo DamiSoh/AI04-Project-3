@@ -11,6 +11,7 @@
 **DB**: SQLite <br>
 **Framework**: FLASK <br>
 **Server**: HEROKU <br>
+**Front Library**: Bootstrap 4.0 <br>
 **Languages**: Python, HTML <br>
 <br>
 <br>
