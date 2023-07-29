@@ -16,7 +16,7 @@
 <br>
 
 
-## 배포
+## 배포 (22.01 중단)
 <br>
 
 https://sdcosmetics2021.herokuapp.com/
